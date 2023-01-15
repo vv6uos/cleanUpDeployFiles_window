@@ -1,5 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
-
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FluentApp(
+    return const MaterialApp(
       title: 'Clean Up Deploy Files',
       home: MyPage(),
     );
@@ -22,55 +21,116 @@ class MyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xff53A0DEFF),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 218, 215, 215),
+      appBar: AppBar(
+        title: Text(
+          '배포 파일 정리',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // padding: EdgeInsets.all(10),
+        // margin: EdgeInsets.all(10),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                FluentIcons.add,
-                color:Colors.grey,
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Icon(
-                FluentIcons.fabric_sync_folder,
-                color: Colors.white,
-              ),
-              
-            /*  IconButton(
-                icon: Icon(FluentIcons.fabric_sync_folder, size: 24.0),
-                onPressed: (){debugPrint('pressed button');},
-                //disabled ? null : () => debugPrint('pressed button'),
-              ),*/
-             /* TextBox(
-                header: 'Enter your path:',
-                placeholder: 'deploy folder path',
-                expands: false,
-              )*/
-            ],
+          Container(
+            width: 400,
+            color: Colors.white,
+            child: TextField(
+              keyboardType: TextInputType.multiline,
+              minLines: 25, //Normal textInputField will be displayed
+              maxLines: null,
+              decoration: InputDecoration(
+                hintText: "배포할 일감을 복사 붙여넣기 해주세요",
+                //fillColor: Colors.black,
+                border: OutlineInputBorder(
+                  //borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.grey,
+                  ),
+                ),
+              ), //
+            ),
           ),
-          const SizedBox(
-            height: 30,
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: (() {
+                    debugPrint('pressed Change');
+                  }),
+                  icon: Icon(Icons.auto_fix_high),
+                ),
+                Text("Clean Up"),
+              ],
+            ),
           ),
-          Button(
-              child: const Text('변환하기'),
-              onPressed: (){
-                debugPrint('button pressed');
-                },
+          Container(
+            padding: EdgeInsets.all(10),
+            width: 400,
+            color: Colors.white,
+            child: Column(
+              children: [
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  minLines: 20,
+                  maxLines: 20,
+                  decoration: InputDecoration(
+                    hintText: "Clean Up 버튼을 클릭하면 일감이 정리됩니다.",
+                    //fillColor: Colors.black,
+                    border: OutlineInputBorder(
+                      //borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                _buildTextComposer(),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
+
+  Widget _buildTextComposer() {
+    return IconTheme(
+      data: IconThemeData(color: Colors.black),
+      child: Container(
+        //color: Colors.black,
+        margin: EdgeInsets.symmetric(horizontal: 0.8),
+        child: Row(
+          children: [
+            Flexible(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "경로를 설정해주세요",
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 0.4),
+              child: IconButton(
+                  icon: Icon(Icons.folder_delete),
+                  onPressed:
+                      () {} // _handleSubmitted(_textEditingController.text),
+                  ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
-
-
-
-
-
-
