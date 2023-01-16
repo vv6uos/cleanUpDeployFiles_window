@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'test1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Clean Up Deploy Files',
       home: MyPage(),
     );
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyPage extends StatelessWidget {
-  const MyPage({Key? key}) : super(key: key);
+  MyPage({Key? key}) : super(key: key);
+  final _workTextController = TextEditingController();
+  final _showTextController = TextEditingController();
+  //final _showTextController;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,7 @@ class MyPage extends StatelessWidget {
             width: 400,
             color: Colors.white,
             child: TextField(
+              controller: _workTextController,
               keyboardType: TextInputType.multiline,
               minLines: 25, //Normal textInputField will be displayed
               maxLines: null,
@@ -59,7 +64,10 @@ class MyPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: (() {
-                    debugPrint('pressed Change');
+                    _showTextController.text = test();
+
+//                    _showTextController.text = _workTextController.text;
+                    //함수를 작성하고 함수안에 텍스트를 전달한 후에 return 받은 값을 _showTextController.text에 넣기
                   }),
                   icon: Icon(Icons.auto_fix_high),
                 ),
@@ -74,6 +82,7 @@ class MyPage extends StatelessWidget {
             child: Column(
               children: [
                 TextField(
+                  controller: _showTextController,
                   keyboardType: TextInputType.multiline,
                   minLines: 20,
                   maxLines: 20,
