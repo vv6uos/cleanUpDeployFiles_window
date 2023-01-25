@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'test1.dart';
+import 'converter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,8 +64,7 @@ class MyPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: (() {
-                    _showTextController.text = test();
-
+                    _showTextController.text = converter(_workTextController.text);
 //                    _showTextController.text = _workTextController.text;
                     //함수를 작성하고 함수안에 텍스트를 전달한 후에 return 받은 값을 _showTextController.text에 넣기
                   }),
