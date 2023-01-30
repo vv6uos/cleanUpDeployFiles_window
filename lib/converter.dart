@@ -11,7 +11,10 @@ String converter(String worksheet) {
 
   for (String wk in works) {
     if (wk.contains("[[")) {
-      files.add(wk);
+      int firstFileIndex = wk.indexOf("[[");
+      int lastfileIndex = wk.indexOf("]]");
+      String fileStr = wk.substring(firstFileIndex, lastfileIndex + 2);
+      files.add(fileStr);
     } else if (wk.contains("rev")) {
       commits.add(wk);
     } else if (wk.contains("#")) {
