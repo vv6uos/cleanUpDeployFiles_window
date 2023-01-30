@@ -44,7 +44,7 @@ class MyPage extends StatelessWidget {
             child: TextField(
               controller: _workTextController,
               keyboardType: TextInputType.multiline,
-              minLines: 25, //Normal textInputField will be displayed
+              minLines: 50, //Normal textInputField will be displayed
               maxLines: null,
               decoration: InputDecoration(
                 hintText: "배포할 일감을 복사 붙여넣기 해주세요",
@@ -55,7 +55,8 @@ class MyPage extends StatelessWidget {
                     color: Colors.grey,
                   ),
                 ),
-              ), //
+              ),
+              style: TextStyle(fontSize: 10), //
             ),
           ),
           Container(
@@ -64,7 +65,8 @@ class MyPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: (() {
-                    _showTextController.text = converter(_workTextController.text);
+                    _showTextController.text =
+                        converter(_workTextController.text);
 //                    _showTextController.text = _workTextController.text;
                     //함수를 작성하고 함수안에 텍스트를 전달한 후에 return 받은 값을 _showTextController.text에 넣기
                   }),
@@ -76,15 +78,15 @@ class MyPage extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(10),
-            width: 400,
+            width: 700,
             color: Colors.white,
             child: Column(
               children: [
                 TextField(
                   controller: _showTextController,
                   keyboardType: TextInputType.multiline,
-                  minLines: 20,
-                  maxLines: 20,
+                  minLines: 30,
+                  maxLines: 30,
                   decoration: InputDecoration(
                     hintText: "Clean Up 버튼을 클릭하면 일감이 정리됩니다.",
                     //fillColor: Colors.black,
@@ -95,6 +97,7 @@ class MyPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  style: TextStyle(fontSize: 12),
                 ),
                 SizedBox(
                   height: 10,
@@ -126,6 +129,7 @@ class MyPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                style: TextStyle(fontSize: 15),
               ),
             ),
             Container(
