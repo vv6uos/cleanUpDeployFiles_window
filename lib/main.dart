@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'converter.dart';
+import 'cleaner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -136,8 +137,9 @@ class MyPage extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 0.4),
               child: IconButton(
                   icon: Icon(Icons.folder_delete),
-                  onPressed:
-                      () {} // _handleSubmitted(_textEditingController.text),
+                  onPressed: () {
+                    cleaner();
+                  } // _handleSubmitted(_textEditingController.text),
                   ),
             ),
           ],
