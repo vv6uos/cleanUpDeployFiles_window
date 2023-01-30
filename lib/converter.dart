@@ -61,6 +61,9 @@ String converter(String worksheet) {
   for (String path in fileCshtml) {
     output += '$path\n';
   }
+  for (String path in fileSql) {
+    output += '$path\n';
+  }
   for (String path in fileEtc) {
     output += '$path\n';
   }
